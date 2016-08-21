@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Django{% endblock %}
+{% block head %}Welcome to Django{% endblock %}
+{% block content %}
+    <p>Welcome {{ user.username }} !!!</p>
+    <br/><br/>
+    New  : <br/>
+    <input type="text" name="page_name" id="room" /><button onclick="sub()">start a new channel</button>
+    <br/><br/>
+    Available channels<br/>
+    {% for e in room %}
+   	 <li><a href="/channel/{{e.channel}}/">{{e.channel}}</a></li>
+    {% endfor %}
+    <a href="/logout/">Logout</a>
+<script type="text/javascript">
+function sub() {
+	var room = document.getElementById('room').value;
+	window.location = '/channel/'+room;
+}
+</script>
+{% endblock %}
